@@ -7,7 +7,7 @@ TOKEN = ""
 client = commands.Bot(command_prefix="!!")
 
 membercodes = {}
-
+basic_role = "users"
 
 @client.event
 async def on_ready():
@@ -23,7 +23,7 @@ async def on_member_join(member):
 async def on_message(message):
     try:
         if membercodes[str(message.author)] == str(message.content):
-            role = discord.utils.get(message.author.guild.roles, name="slave")
+            role = discord.utils.get(message.author.guild.roles, name=basic_role)
             await message.author.add_roles(role)
             del membercodes[str(message.author)]
     except:
