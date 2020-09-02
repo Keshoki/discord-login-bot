@@ -22,7 +22,7 @@ async def on_member_join(member):
 @client.event
 async def on_message(message):
     try:
-        if membercodes[str(message.author)] == str(message.content):
+        if membercodes[str(message.author)] == str(message.content) and str(message.channel) == "join":
             role = discord.utils.get(message.author.guild.roles, name=basic_role)
             await message.author.add_roles(role)
             del membercodes[str(message.author)]
