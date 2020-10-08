@@ -2,16 +2,18 @@ import discord
 from discord.ext import commands
 from random import randint
 
-TOKEN = ""
 
-client = commands.Bot(command_prefix="!!")
+client = commands.Bot(command_prefix="!")
+
 
 membercodes = {}
 basic_role = "users"
 
+
 @client.event
 async def on_ready():
     print("I'm ready!")
+
 
 @client.event
 async def on_member_join(member):
@@ -28,5 +30,6 @@ async def on_message(message):
             del membercodes[str(message.author)]
     except:
         pass
+
 
 client.run(TOKEN)
